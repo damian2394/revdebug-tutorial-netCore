@@ -1,14 +1,32 @@
-<Project> 
-<PropertyGroup> 
-<RevDeBugActive>true</RevDeBugActive> 
-<UseRevDeBugOnThisProject>true</UseRevDeBugOnThisProject>
- <RevDeBugStateStorageType>LiveRecorder</RevDeBugStateStorageType>
- <SendToServer>true</SendToServer> 
- <RecorderAddress>crash-reports.revdebug.com</RecorderAddress> 
- <RecorderTCPPort>42734</RecorderTCPPort> 
- <RevDeBugMetadataPath>$(RevDeBugCompilerPath)\Metadata</RevDeBugMetadataPath> 
- </PropertyGroup> 
- <PropertyGroup Condition="'$(TargetFrameworkIdentifier)' != '.NETFramework'"> 
- <isNetCore>true</isNetCore> 
- </PropertyGroup> 
- </Project>
+<Project>
+    <PropertyGroup Condition="'$(RevDeBugDisableNuget)' != 'true'">
+        <RevDeBugActive>true</RevDeBugActive>
+        <UseRevDeBugOnThisProject>true</UseRevDeBugOnThisProject>
+        <RevDeBugStateStorageType>LiveRecorder</RevDeBugStateStorageType>
+        <SendToServer>true</SendToServer>
+        <RecorderAddress>crash-reports.revdebug.com</RecorderAddress>
+        <RecorderTCPPort>42734</RecorderTCPPort>
+        <RevDeBugMetadataPath>/rdb/Metadata</RevDeBugMetadataPath>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(TargetFrameworkIdentifier)' != '.NETFramework'">
+        <isNetCore>true</isNetCore>
+    </PropertyGroup>
+  <PropertyGroup>
+    <_RevDeBugSetupFileFixDependsOn>
+      GenerateRevDeBugSetupFile;
+    </_RevDeBugSetupFileFixDependsOn>
+  </PropertyGroup>
+  <Target
+      Name="_RevDeBugSetupFileFix"
+      BeforeTargets="CopyRevDeBugFilesToOutputDirectory"
+      DependsOnTargets="$(_RevDeBugSetupFileFixDependsOn)"/>
+
+  <Target Name="_RevDeBugAlterToolPathEx" AfterTargets="_RevDeBugAlterToolPath">
+
+    <PropertyGroup>
+      <CscToolExe>csc.sh</CscToolExe>
+      <CscToolPath>$(RevDeBugCompilerPath)</CscToolPath>
+      <VbcToolPath>$(RevDeBugCompilerPath)</VbcToolPath>
+    </PropertyGroup>
+  </Target>
+</Project>
