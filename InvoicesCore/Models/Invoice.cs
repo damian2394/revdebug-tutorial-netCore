@@ -22,6 +22,7 @@ namespace Invoices.Models
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DueDate { get; set; }
         public double Reconciled { get; set; }
+        public bool Accepted { get; set; }
 
         public int AccountId { get; set; }
 
