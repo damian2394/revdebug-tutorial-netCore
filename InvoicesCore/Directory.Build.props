@@ -1,0 +1,14 @@
+<Project> 
+<PropertyGroup> 
+<RevDeBugActive>true</RevDeBugActive> 
+<UseRevDeBugOnThisProject>true</UseRevDeBugOnThisProject>
+ <RevDeBugStateStorageType>LiveRecorder</RevDeBugStateStorageType>
+ <SendToServer>true</SendToServer> 
+ <RecorderAddress>crash-reports.revdebug.com</RecorderAddress> 
+ <RecorderTCPPort>42734</RecorderTCPPort> 
+ <RevDeBugMetadataPath>$(RevDeBugCompilerPath)\Metadata</RevDeBugMetadataPath> 
+ </PropertyGroup> 
+ <PropertyGroup Condition="'$(TargetFrameworkIdentifier)' != '.NETFramework'"> 
+ <isNetCore>true</isNetCore> 
+ </PropertyGroup> 
+ </Project>
