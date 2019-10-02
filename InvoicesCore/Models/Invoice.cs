@@ -30,5 +30,10 @@ namespace Invoices.Models
         public virtual Account Contractor { get; set; }
 
         public virtual ICollection<InvoiceEntry> InvoiceEntries { get; set; }
+
+        public override string ToString()
+        {
+            return "Invoice: " + InvoiceId + ", Issue Date:" + IssueDate + ", DueDate: " + DueDate + ", Reconciled: " + Reconciled;
+        }
     }
 }

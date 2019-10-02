@@ -2,7 +2,7 @@
     <PropertyGroup Condition="'$(RevDeBugDisableNuget)' != 'true'">
         <RevDeBugActive>true</RevDeBugActive>
         <UseRevDeBugOnThisProject>true</UseRevDeBugOnThisProject>
-        <RevDeBugStateStorageType>LiveRecorder</RevDeBugStateStorageType>
+        <RevDeBugStateStorageType>CrashRecorder</RevDeBugStateStorageType>
         <SendToServer>true</SendToServer>
         <RecorderAddress>crash-reports.revdebug.com</RecorderAddress>
         <RecorderTCPPort>42734</RecorderTCPPort>
@@ -23,7 +23,7 @@
 
   <Target Name="_RevDeBugAlterToolPathEx" AfterTargets="_RevDeBugAlterToolPath">
 
-    <PropertyGroup>
+    <PropertyGroup Condition="'$(RevDeBugDisableNuget)' != 'true'">
       <CscToolExe>csc.sh</CscToolExe>
       <CscToolPath>$(RevDeBugCompilerPath)</CscToolPath>
       <VbcToolPath>$(RevDeBugCompilerPath)</VbcToolPath>
