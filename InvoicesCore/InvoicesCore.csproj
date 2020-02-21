@@ -6,10 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot\Images\InvoicesLogo.png" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="DataAccess\InvoiceData.xml" />
     <AdditionalFiles Include="project.rdbdisplay" />
   </ItemGroup>
@@ -29,7 +25,6 @@
     <None Include="wwwroot\fonts\glyphicons-halflings-regular.ttf" />
     <None Include="wwwroot\fonts\glyphicons-halflings-regular.woff" />
     <None Include="wwwroot\fonts\glyphicons-halflings-regular.woff2" />
-    <None Include="wwwroot\Images\InvoicesLogo.png" />
     <None Include="wwwroot\Scripts\bootstrap.js" />
     <None Include="wwwroot\Scripts\bootstrap.min.js" />
     <None Include="wwwroot\Scripts\invoices.js" />
